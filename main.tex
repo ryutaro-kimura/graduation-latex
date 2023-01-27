@@ -5,57 +5,51 @@
 \usepackage{ascmac}
 
 
-\title{FIWAREへの
+\title{FIWAREへの\\
 佐賀市営バスデータの蓄積と利用
 }
-\author{弘前大学理工学部地球環境防災学科\\
-学籍番号　名前}
-\date{2020年吉日}
+\author{佐賀大学
+理工学部
+知能情報システム学科\\
+19238174
+木村龍太郎}
+\date{令和5年2月1日}
 
 
 \begin{document}
   \maketitle
+
+
+  \begin{abstract}
+    \par 近年、スマートシティを実現するために、交通、エネルギー、環境、観光、防災といった様々な分野のデータが利活用されている。しかしながら、それらのデータを用いて分野や組織ごとで個別にシステムを構築したり、独特のインターフェースや仕様をもっているため、スマートシティ実現において行わなければならない他の地域への再利用や横展開、分野間でのデータ利活用が困難であるという課題がある。
+    \par そこで、近年注目を集めているのが、様々な分野のデータを一括管理・運用できる都市OSと呼ばれるソフトウェア基盤である。本研究では、都市OSを構築するためのソフトウェアの一つであるFIWAREを用いて、佐賀市営バスデータをFIWAREのOrion
+    Context Broker(以降Orion)へ蓄積し、蓄積されたデータを用いてバス停マップアプリの開発を行った。これにより、GTFSと呼ばれる公共交通分野において統一されている形式の状態であった佐賀市営バスデータが、NGSIと呼ばれれる異分野同士で共通した標準的な形式に変換され、データが分野横断しやすくなり、さらにそれが実際にOrionから取り出して利活用出来るかどうかの検証結果を残した。
+  \end{abstract}
+
   \tableofcontents
 
   \chapter{はじめに}
+  \section{論文構成}
 
 
-  最初はイントロ的なことを書く。
-  \section{現状と問題点}
+  \chapter{準備}
 
 
-  最近の現状と問題点とか。
-
-  \section{解決策の提案}
-
-
-  こうしたらいい，とか。
-
-  \section{数式の書き方}
-
-
-  アインシュタイン方程式は以下の通りである。
-  \begin{equation}
-    R_{\mu\nu}- \frac{1}{2}g_{\mu\nu}R = \frac{8\pi G}{c^{2}}T_{\mu\nu}
-  \end{equation}
-
-  \chapter{つぎに}
-
-
-  この辺から本番。
-
-  \section{文献の引用の仕方}
+  \section{FIWARE(概要、Orion、NGSI)}
+  \section{MakeOurCity}
+  \section{GTFS}
+  \section{SmartDataModel}
 
 
   データは参考文献\cite{rika} にあったものを使った． この文献\cite{ten}も参考にした。
 
-  \section{図の挿入の仕方}
-  \begin{figure}[h]
-    \begin{center}
-      \includegraphics[width=7cm]{./plot1.pdf}
-      \caption{サイン関数のグラフ}
-    \end{center}
-  \end{figure}
+  %   \section{図の挿入の仕方}
+  %   \begin{figure}[h]
+  %     \begin{center}
+  %       \includegraphics[width=7cm]{./plot1.pdf}
+  %       \caption{サイン関数のグラフ}
+  %     \end{center}
+  %   \end{figure}
 
   \chapter{最後に}
 
@@ -74,11 +68,10 @@
   \chapter*{謝辞}
 
 
-  謝辞には第何章とかの番号をつけなくてもよいので，そんなときは，
-  \verb|\chapter*{ }| という具合に書きます。
+  謝辞には第何章とかの番号をつけなくてもよいので，そんなときは， \verb|\chapter*{ }|
+  という具合に書きます。
 
-  みなさん，ありがとう．(普通の人が見るのは，イントロと謝辞だけ...
-  という説もあるから，忘れないで書く．)
+  みなさん，ありがとう．(普通の人が見るのは，イントロと謝辞だけ... という説もあるから，忘れないで書く．)
 
   \appendix
   \chapter{付録があるときは}
