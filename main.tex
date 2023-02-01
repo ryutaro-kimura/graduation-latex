@@ -7,33 +7,71 @@
 \usepackage{float}
 
 
-\title{FIWAREへの\\
-佐賀市営バスデータの蓄積と利用
-}
-\author{佐賀大学
-理工学部
-知能情報システム学科\\
-19238174
-木村龍太郎}
-\date{令和5年2月1日}
-
-
 \begin{document}
-  \maketitle
+  \begin{titlepage}
+    \begin{center}
+      {\Large 令和4年度}
+      \vspace{10truept}
 
 
-  \begin{abstract}
-    \par 近年、スマートシティ実現に向けて、交通や観光、防災といった様々な分野のデータを共有・利用するニーズが高まっている。そこで注目されているのが、異分野のデータを連携し、一括管理・運用できる都市OSと呼ばれるソフトウェア基盤である。
-    \par 本研究では、都市OSを構築するためのソフトウェアの一つであるFIWAREを用いて、佐賀市営バスデータをFIWAREへ蓄積し、蓄積されたデータを用いてバス停マップアプリの開発を行った。これにより、佐賀市営バスデータが分野横断しやすい形式に変換され、更にそのデータが実際にFIWAREから取り出して利活用出来るかどうかの検証結果を残した。
-  \end{abstract}
+      {\Large 佐賀大学 理工学部 理工学科}
+      \vspace{10truept}
+
+
+      {\Large 情報ネットワーク工学コース}
+      \vspace{10truept}
+
+
+      {\Large 卒業論文}
+      \vspace*{100truept}
+
+
+      {\huge FIWAREへの\\ 佐賀市営バスデータの蓄積と利用}
+      \vspace{160truept}
+
+
+      {\Large 提出者 19238174 木村龍太郎}
+      \vspace{10truept}
+
+
+      {\Large 指導教員 大谷 誠 准教授 堀 良彰教授}
+      \vspace{70truept}
+
+
+      {\Large 提出日 令和5 年2 月1 日}
+    \end{center}
+  \end{titlepage}
+
+  \begin{center}
+    \bf 概要
+  \end{center}
+  \par
+  近年、スマートシティ実現に向けて、交通や観光、防災といった様々な分野のデータを共有・利用するニーズが高まっている。そこで注目されているのが、異分野のデータを連携し、一括管理・運用できる都市OSと呼ばれるソフトウェア基盤である。
+  \par
+  本研究では、都市OSを構築するためのソフトウェアの一つであるFIWAREを用いて、佐賀市営バスデータをFIWAREへ蓄積し、蓄積されたデータを用いてバス停マップアプリの開発を行った。これにより、佐賀市営バスデータが分野横断しやすい形式に変換され、更にそのデータが実際にFIWAREから取り出して利活用出来るかどうかの検証結果を残した。
+
+  \begin{center}
+    \bf Abstract
+  \end{center}
+  \par In recent years, there has been a growing need to share and use data from
+  various fields, such as transportation, tourism, and disaster prevention, in
+  order to realize smart cities. In response, attention has focused on a
+  software platform called an "urban OS" that can link data from different
+  fields and manage and operate them all together. \par In this study, using
+  FIWARE, a software application for building an urban OS, Saga City bus data
+  was stored in FIWARE, and a bus stop map application was developed using the stored
+  data. This enabled the conversion of Saga City bus data into a format that is
+  easy to use across different fields, and furthermore, the results verified
+  that the data can actually be retrieved from FIWARE and utilized.
 
   \tableofcontents
 
   \chapter{はじめに}
-  \section{本研究の背景と目的}
-  \par 様々な分野や領域のデータ流通が期待されるスマートシティにおいて、データを一括管理・運用し、利活用を促進するデータ流通の仕組み作りが重要になっている。しかしながら、分野や組織ごとで個別にシステムを構築しているため、独特のインターフェースや仕様をもっており、他の地域へのシステムの再利用や横展開、分野間を横断した新サービスの構築が困難であるといった課題がある。
-  \par これらの解決策として注目されているのが、都市OSと呼ばれるソフトウェア基盤である。その中でも近年注目されているのが、EU（欧州連合）での官民連携投資によって開発され、世界中で活用実績がある「FIWARE（ファイウェア）」である。既に世界26カ国140都市以上がFIWAREを採用している。日本もその国の一つであり、佐賀県でも水位や人流といったデータの蓄積が行われている。しかし、まだ他国に比べて日本では実績が少なく、蓄積されていない分野のデータが多くみられる。
-  \par そこで本研究では、佐賀県が公開している佐賀市営バスデータ\cite{sagaBusSite}をFIWAREへ蓄積・利活用することで、スマートシティ実現に向けて貢献することを目的とする。そのために、本研究では二つの開発を行った。一つ目はFIWAREへ蓄積するために、現状のバスデータの形式であるGTFS形式からNGSI形式に変換するツール。二つ目は、FIWAREから蓄積したバスデータを取得し、マップに表示するアプリケーションだ。
+  \section{本研究の背景}
+  \par 様々な分野や領域のデータ流通が期待されるスマートシティにおいて、データやシステムを一括管理・運用し、利活用を促進する仕組み作りが重要になっている。しかしながら、分野や組織ごとで個別にシステムを構築しているため、独特のインターフェースや仕様をもっており、他の地域へのシステムの再利用や横展開、分野間を横断したデータ連携が困難であるといった課題がある。
+  \par これらの解決策として注目されているのが、都市OSと呼ばれるソフトウェア基盤である。その中でも近年注目されているのが、EU（欧州連合）での官民連携投資によって開発され、世界中で活用実績がある「FIWARE（ファイウェア）」である。既に世界26カ国140都市以上がFIWAREを採用している。日本もその国の一つであり、佐賀県でも水位や人流といったデータの蓄積が行われている。しかし、まだ実績が少なく、蓄積されていない分野のデータが多くみられる。
+  \section{本研究の目的}
+  \par そこで本研究では、Code for Japanと佐賀県が管理しているFIWAREのOrionサーバに、まだ蓄積されていない佐賀市営バスデータ\cite{sagaBusSite}を蓄積し、利活用することで、スマートシティ実現に向けて貢献することを目的とする。そのために、本研究では二つの開発を行った。一つ目はFIWAREへ蓄積するために、現状のバスデータの形式であるGTFS形式からNGSI形式に変換するツール。二つ目は、FIWAREから蓄積したバスデータを取得し、マップに表示するアプリケーションだ。
   \par これらの開発を通して、公共交通分野において統一されているGTFS形式の状態であった佐賀市営バスデータが、NGSIと呼ばれれる異分野同士で共通した標準的な形式に変換され、データが分野横断しやすくなり、さらにそれが実際にOrionから取り出して利活用出来るかどうかの検証結果を残した。
 
   \chapter{準備}
@@ -41,111 +79,167 @@
 
   \section{FIWARE}
   \par FIWARE とはFI（Future Internet）WARE （softWARE）の略で、自治体や企業などの業種を超え
-  たデータ利活用やサービス連携を促すために開発された都市OSの一種である。EU の次 世代インターネット官民連携プログラム（FI-PPP）で
-  開発・実装された。 \par FIWAREは複数のコンポーネントと呼ばれるソフトウェア群で構成されており(図2.1)、本研究ではその中でもOrion
+  たデータ利活用やサービス連携を促すために開発された都市OSの一種である。EUの次世代インターネット官民連携プログラム（FI-PPP）で開発・実装され、オープンソースソフトウェアとして提供されている。
+  \par FIWAREは複数のコンポーネントと呼ばれるソフトウェア群で構成されており(図2.1)、中にはデータを可視化するためのコンポーネントであったり、IoTのデータ収集に関わるコンポーネントなどがある。本研究ではその中でもOrion
   Context Broker(後述)と呼ばれるコンポーネントを用いることで、データを蓄積・取得する。
-
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=10cm]{./2-1-FIWARE.png}
-      \caption{サイン関数のグラフ}
+      \includegraphics[width=12cm]{./2-1-FIWARE.png}
+      \caption{FIWAREの構図\\ 参照：\protect\url{https://github.com/FIWARE/catalogue}}
     \end{center}
   \end{figure}
 
   \section{Orion Context Broker}
-  Orion Context Broker (以後Orion)とはFIWAREのコア（必須）となるコンポーネントである。MongoDBをデータストアとし、データを保管・管理するための機能を持っているのに加え、NGSI(後述)形式でデータを公開できる。特徴として、Orionに保管されるデータのライフサイクルは基本的に短く、最新のデータにより上書き更新される。本研究では、佐賀市営バスデータをこのOrionコンポーネントに蓄積する。
+  Orion Context Broker (以後Orion)とはコンテキストと呼ばれる都市の様々なモノ・コトに紐づくデータを管理する役割を持ったコンポーネントである。MongoDBをデータストアとし、NGSI形式(後述)でデータを公開できる。Orionに保管されるデータのライフサイクルは基本的に短く、最新のデータにより上書き更新される。本研究では、佐賀市営バスデータをこのOrionコンポーネントに蓄積する。
+
   \section{NGSI}
+  \par NGSIとはモバイル事業者やベンダーによって構成される標準化団体であるOMA（Open
+  Mobile Alliance）が標準化したネットワークAPI の国際標準フォーマットである。いままで、公共交通情報や気温といった分野ごとに異なる規格で管理されていたモノ・コトが、すべてこの規格に統一されることによって、異分野間のデータ連携が容易に出来るようになる。
 
-
-  \section{MakeOurCity}
   \section{GTFS}
-  \section{SmartDataModel}
+  \par GTFS（General Transit Feed
+  Specification）は、経路検索サービスや地図サービスへの情報提供を目的としてアメリカで策定された世界標準の公共交通データフォーマットである。多くの地域でオープンデータとして公開されてあり、バスだけでなく、鉄道・バス・船・飛行機など、様々な公共交通に利用することが可能である。また、GTFSには静的データと動的データの二種類のファイルフォーマットが存在している。静的データは、バス停の名前や位置、運賃情報といった当日の運行状況で変化しない情報を表現するもので、動的データはバスや飛行機等のリアルタイムな位置情報や人数の情報を表現する。
 
+  \section{Code for Japan}
+  \par Code for Japanは、行政機関などに対して研修やセミナーを行ったり、公共向けの自社サービスを提供する非営利型の一般社団法人である。また、シビックテックと呼ばれる市民と技術を掛け合わせた市民活動を推進するコミュニティとしても活動している。本研究では、Code
+  for Japanで行われているMake our Cityと呼ばれる取り組みと連携して、FIWAREのOrionの環境を使用させていただいた。
 
   \chapter{データ蓄積ツールの開発}
   \section{開発の経緯}
-  \par 佐賀市営バスデータを蓄積するツールを開発した経緯は二つある。 \par 一つは大量のバスデータを効率よく変換し、蓄積するためである。前提として、FIWAREのOrionにデータを蓄積するためには、Orionが受け付けるNGSI形式に一つ一つ変換し、curl等でPOSTリクエストを送る必要がある。しかし、佐賀県の路線バス情報のデータサイトからダウンロードした静的データのzipファイルの中身を見てみると、バス停の情報(stops.txt)だけでも約5000箇所もある。これらをすべて蓄積するには、ファイル単位ではなくバス停一つ一つを処理しなければならず、手間がかかることが予想できたからである。
-  \par もう一つは、既存のデータ蓄積ツールがなかったからである。2022年11月時点で、著者が調査した限りにおいては、GTFSをFIWAREに蓄積するためのオープンソースとして公開されているソフトウェアは見当たらなかった。
+  \par 佐賀市営バスデータを蓄積するツールを開発した経緯は二つある。 \par
+  一つは大量のバスデータを効率よく変換し、蓄積するためである。前提として、FIWAREのOrionにデータを蓄積するためには、Orionが受け付けるNGSI形式に一つ一つ変換し、curl等でPOSTリクエストを送る必要がある。しかし、佐賀県の路線バス情報のデータサイトからダウンロードした静的データのzipファイルの中身を見てみると、バス停の情報(stops.txt)だけでも約5000箇所もある。これらをすべて蓄積するには、ファイル単位ではなくバス停一つ一つを処理しなければならず、手間がかかることが予想できたからである。
+  \par
+  もう一つは、既存のデータ蓄積ツールがなかったからである。2022年11月時点で、著者が調査した限りにおいては、GTFSをFIWAREに蓄積するためのオープンソースとして公開されているソフトウェアは見当たらなかった。
+
   \section{開発環境}
-  この章では、開発で用いたツールとその背景についても触れる。
+  この節では、開発で用いたツールとその背景についても触れる。
   \subsection{Python}
-  \par Python(パイソン)
-  は1990年代初頭ごろから公開されているプログラミング言語で、わかりやすく、実用的な言語として、広く使われ続けている。また特徴として、データ処理が得意なため今回の採用にも至った。本研究では、バージョン3.9.10を用いる。
+  \par Pythonは1990年代初頭ごろから公開されているプログラミング言語で、わかりやすく、実用的な言語として、広く使われ続けている。また特徴として、データ処理が得意なため今回の採用に至った。本研究では、バージョン3.9.10を用いる。
   \subsection{FastAPI}
-  \par FastAPI は、Pythonの標準である型ヒントに基づいてPython 3.6 以降でAPI を構築するための、モダンで、高速(高パフォーマンス)な、Web
+  \par FastAPI は、Pythonの標準である型ヒントに基づいてPython 3.6 以降でAPI
+  を構築するための、モダンで、高速(高パフォーマンス)な、Web
   フレームワークである。特徴の一つとして、デフォルトでAPIドキュメントを作成することができるため、API仕様書を作成する際にも役立てる。本研究では、FIWAREにデータを蓄積する事のみにしか使わなかったが、将来的にAPI仕様書を作成したり、デプロイする想定も踏まえてあえてフレームワークを採用した。
-  \subsection{Amazon
-  Cognito}
-  \par
+  \subsection{Amazon Cognito}
+  \par Amazon
+  Cognitoとは、Amazonが提供しているソフトウェア開発キットの一種であり、ウェブアプリケーションおよびモバイルアプリにユーザーのサインアップ/サインイン、アクセス制御機能を追加できるサービスである。本研究で、2.5節で紹介したCode
+  for
+  Japanと佐賀県で管理しているFIWAREのOrionサーバへアクセスを行った際の認証に必要だったため使用した。
+
   \section{開発の概要}
-
-
-  \subsection{開発手法}
-  FIWAREにデータを蓄積する方法はFIWAREの公式ドキュメントを参考にした。手順をまとめると以下のとおりである。
+  \subsection{設計}
+  \par 3.1節でも述べたように、バスデータを蓄積するためには、GTFS形式のままでFIWAREへ蓄積しようとしても入らず、はじかれる仕組みになっているため、NGSI形式へのデータの変換を行う。なお、変換の仕方や蓄積方法については、FIWAREの公式ドキュメント\cite{fiwareDoc}を参考にした。
+  全体の処理の流れとしては以下のように行う。
   \begin{enumerate}
-    \item 佐賀市営バスデータの取得
+    \item 佐賀市営バスデータ(GTFS形式)の取得
 
-    \item GTFS形式のバスデータをNGSI形式のバスデータに正規化する
+    \item バスデータをNGSI形式のバスデータに正規化する
 
-    \item 正規化したオブジェクトをJSONに変換する
-
-    \item そのJSONをOrionサーバにPOST
+    \item 正規化したオブジェクトをJSONに変換し、OrionサーバにPOSTする
   \end{enumerate}
-  \par
+  \par そして、開発環境を踏まえた設計の全体図を図3.1に示す。
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=12cm]{./add_fiware.png}
+      \caption{FIWAREへの蓄積するシステムの全体図}
+    \end{center}
+  \end{figure}
+  \par 次節の3.3.2でそれぞれの詳細を示す。
+  \subsection{実装}
+  \begin{enumerate}
+    \item 佐賀市営バスデータ(GTFS形式)の取得 \par 佐賀県が公開している佐賀市営バスデータサイト\cite{sagaBusSite}から静的データをダウンロード出来る。その中のバス停の情報が書かれたstop.txtを取得し、Pythonで読み込んだ。ファイルの種類はテキストファイルであったが、中身はヘッダー属性ありのコンマ区切りの体裁であったため、csv(comma
+      separated values)のような扱いが出来た。
+
+    \item バスデータをNGSI形式のバスデータに正規化する \par GTFS形式のバスデータをNGSI形式に正規化するためには、FIWARE等が運営するSmartDataModels\cite{smartDataModel}という組織が公開しているUrbanMobilityモデルのGtfsStop\cite{GtfsStop}に基づいて、以下のようにGTFSとNGSIを対応付けることで正規化を行った。
+      \begin{screen}
+        \begin{verbatim}
+ngsi_stop: GtfsStopTuple = {
+    "id": "urn:ngsi-ld:GtfsStop:{}".format(gtfs_stop.stop_id),
+    "type": "GtfsStop",
+    "name": gtfs_stop.stop_name,
+    "location": {
+        "type": gtfs_stop.location_type,
+        "coordinates": [gtfs_stop.stop_lat, gtfs_stop.stop_lon]
+    },
+    "operateBy": [
+        "urn:ngsi-ld:GtfsStop:{}".format(gtfs_stop.stop_id)
+    ],
+}
+      \end{verbatim}
+      \end{screen}
+
+    \item 正規化したオブジェクトをJSONに変換し、OrionサーバにPOSTする \par POSTリクエストを使用する場合、Context-Type
+      ヘッダを使用してフォーマット (JSON) を指定する必要があるため、先ほど作成したngsi\_stopオブジェクトをJSONに変換してからPOSTする。また、Code
+      for Japanの取り組みのMake our Cityで作られたAmazon Cognitoを使ったFIWAREへの認証処理のコード\cite{makeOurAuth}を参考にすることで、FIWAREへのアクセスが出来るようになった。なお、認証の際のパスワード等はCode
+      for Japanの方々から提供していただいた。
+      \begin{screen}
+        \begin{verbatim}
+def get_auth() -> AuthBase:
+    auth = RequestsSrpAuth(
+        username=os.getenv("USERNAME"),
+        password=os.getenv("PASSWORD"),
+        user_pool_id=os.getenv("USER_POOL_ID"),
+        client_id=os.getenv("APP_CLIENT_ID"),
+        user_pool_region=os.getenv("USER_POOL_REGION"),
+    )
+    return auth
+
+ngsi_stop_json = json.dumps(ngsi_stop, cls=NpEncoder)
+try:
+    orion_endpoint = os.getenv("ORION_ENDPOINT")
+    auth = get_auth()
+    requests.post(
+        orion_endpoint + "/v2/entities?options=keyValues",
+        auth=auth,
+        data=ngsi_stop_json,
+        headers={"content-type": "application/json"},
+    )
+except Exception as e:
+    print("post exception：", e)
+    \end{verbatim}
+      \end{screen}
+  \end{enumerate}
 
   \section{結果と考察}
-  \par 蓄積が出来た
+  \par
+  以上の処理でFIWAREの中身を見てみると、バス停のデータの蓄積が成功していた。しかしながら、リクエストをバス停の数約5000箇所分送らなけらばならなかったため、たくさん時間がかかった。なので、設計から見直して並列でリクエストを送るであったり、処理を高速化するといった必要があると考察した。
 
   \chapter{FIWAREを用いたバス停マップアプリの開発}
   \section{開発の経緯}
   \section{開発環境}
+  \subsection{TypeScript}
+  \subsection{Next.js}
+  \subsection{Google Map API}
   \section{開発の概要}
-  \subsection{開発手法}
+  \subsection{設計}
+  \subsection{実装}
   \section{結果と考察}
 
 
   \chapter{最後に}
-  結論とか，まとめとか。 最後にいうのもなんだが，ベクトルの書き方。
+  \section{まとめ}
+  \par
+  \section{今後の課題と展望}
+  \par 結論とか，まとめとか。
 
   \chapter*{謝辞}
+  本論文の作成にあたり、多くの方々にご指導ご鞭撻を賜りました。
 
+  指導教官の大谷 誠 准教授、堀 良彰 教授、田中 久治技術専門職員には終始適切なご指導を賜りました。ここに深謝の意を表します。
 
-  謝辞には第何章とかの番号をつけなくてもよいので，そんなときは，
-  \verb|\chapter*{ }| という具合に書きます。
-
-  みなさん，ありがとう．(普通の人が見るのは，イントロと謝辞だけ...
-  という説もあるから，忘れないで書く．)
-
-  \appendix
-  \chapter{付録があるときは}
-  プログラム文とかを書いてページ数を稼ぎたいときは， 以下のようにしてみます。
-
-  \begin{verbatim}
-  #include <iostream>
-  using namespace std;
-  int main() {
-      for(int i = 1; i <= 5; i++) {
-          cout << "こんにちは, C++ の世界!   "  << i << endl;
-      }
-      return 0;
-  }
-  \end{verbatim}
-  \verb|\usepackage{ascmac}|して\verb|screen| 環境を使うと，枠がつきます。
-  \begin{screen}
-    \begin{verbatim}
-    #include <iostream>
-    using namespace std ;
-    int main() {
-        for(int i = 1; i <= 5; i++) {
-            cout << "こんにちは, C++ の世界!   "  << i << endl;
-        }
-        return 0;
-    }
-    \end{verbatim}
-  \end{screen}
+  最後に、Code for
+  Japanの皆様には、多大なご助言、本研究の開発環境の提供といったご協力を頂きました。厚く御礼申し上げます。
 
   \begin{thebibliography}{99}
-    \bibitem{kanmin} 官民データ活用推進基本法 \url{https://elaws.e-gov.go.jp/document?lawid=428AC1000000103}
-    \bibitem{sagaBusSite} 佐賀県の路線バス情報のデータ \url{http://opendata.sagabus.info/}
+    %   第一章
+    \bibitem{sagaBusSite} 佐賀県の路線バス情報のデータ\\
+    \url{http://opendata.sagabus.info/}
+    %     第三章
+    \bibitem{fiwareDoc} FIWARE NGSI APIv2 ウォークスルー\\ \url{https://fiware-orion.letsfiware.jp/user/walkthrough_apiv2/}
+    \bibitem{smartDataModel} SmartDataModel\\
+    \url{https://github.com/smart-data-models}
+
+    \bibitem{GtfsStop} エンティティGtfsStop\\
+    \url{https://github.com/smart-data-models/dataModel.UrbanMobility/blob/master/GtfsStop/doc/spec_JA.md}
+    \bibitem{makeOurAuth} makeOurCity/python-sample\\ \url{https://github.com/makeOurCity/python-sample}
   \end{thebibliography}
 \end{document}
